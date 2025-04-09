@@ -317,24 +317,36 @@ INSERT INTO FolhaPagamento (FuncionarioID, DataPagamento, ValorPago) VALUES
 (15, '2023-12-31', 7000.00),
 (15, '2024-01-31', 7000.00);
 
+#1.
 select * from funcionarios where departamentoID = 5;
 
+#2
 select nome, sobrenome from funcionarios where funcionarioID < 11 order by DataContratacao;
 
+#3
 select nome from funcionarios where DataContratacao >= '2023-01-01' && DataContratacao <'2024-01-01';
 
+#4
 select NomeProjeto, Orçamento from projetos where DataInicio >= '2022-01-01' && DataInicio <'2023-01-01' order by Orçamento;
 
+#5
 select titulo, SalarioBase from cargos order by SalarioBase desc limit 5;
 
+#6
 select * from FolhaPagamento  order by FuncionarioID desc limit 10 offset 5;
 
+
+#7
 delete from FolhaPagamento where ValorPago >= 3000 && ValorPago < 5000;
 
-select ValorPago from FolhaPagamento where DataPagamento >= '2023-01-01' && DataPagamento < '2024-01-01';
+#8
+select avg(ValorPago) from FolhaPagamento where DataPagamento >= '2023-01-01' && DataPagamento < '2023-03-01';
 
+#9
 update cargos set titulo = "Gerente de M" where CargoID = 3;
 
+#10
+UPDATE cargos set salariobase = salariobase * 1.1;	
 
-
+#libera o DELETE e o UPDATE
 set sql_safe_updates=0;

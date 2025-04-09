@@ -1,0 +1,45 @@
+
+drop database if exists fiscal;
+create database fiscal;
+use fiscal;
+
+
+create table conta(
+codigo int not null,
+descricao varchar(255),
+codigo_tipo_conta int not null,
+codigo_usuario int not null,
+saldo decimal(10,2),
+primary key(codigo)
+);
+
+create table movimentacao(
+codigo int not null,
+descricao varchar(255),
+tipo_movimetnacao enum('rapido','devagar'),
+valor decimal(10,2),
+codigo_conta int not null,
+FOREIGN KEY (codigo_conta) REFERENCES conta(codigo),
+primary key(codigo)
+);
+
+create table tipo_conta(
+codigo int not null,
+descricao varchar(255),
+primary key(codigo)
+);
+
+create table usuario(
+codigo int not null,
+nome varchar(45),
+rua varchar(45),
+numero varchar(45),
+bairro varchar(45),
+cep varchar(8),
+cidade varchar(45),
+uf varchar(2),
+data_de_nascimento datetime,
+primary key(codigo)
+);
+
+set sql_safe_updates=0;
